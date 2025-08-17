@@ -1,0 +1,138 @@
+/* General styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: linear-gradient(135deg, #1f1c2c, #928dab);
+  color: #fff;
+}
+
+.hidden {
+  display: none;
+}
+
+.menu, .game {
+  text-align: center;
+}
+
+h1 {
+  margin-bottom: 20px;
+  font-size: 2.5rem;
+  color: #ffd700;
+  text-shadow: 2px 2px 10px rgba(255, 215, 0, 0.7);
+}
+
+input {
+  padding: 10px;
+  margin: 10px;
+  border-radius: 8px;
+  border: none;
+  font-size: 1rem;
+  text-align: center;
+}
+
+/* Board */
+.board {
+  display: grid;
+  gap: 10px;
+  margin: 20px auto;
+  position: relative; /* for winning line */
+}
+
+.cell {
+  background: #2c2f48;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.5rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s, background 0.3s;
+}
+
+.cell:hover {
+  background: #3b3f61;
+  transform: scale(1.05);
+}
+
+/* X and O colors */
+.cell.X {
+  color: #00ffea;
+  text-shadow: 0 0 10px #00ffea, 0 0 20px #00ffea;
+}
+
+.cell.O {
+  color: #ff3333;
+  text-shadow: 0 0 10px #ff3333, 0 0 20px #ff3333;
+}
+
+/* Status */
+.status {
+  margin-top: 20px;
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 0 0 10px #ffd700;
+}
+
+/* Buttons */
+button {
+  margin: 10px;
+  padding: 10px 25px;
+  border: none;
+  border-radius: 10px;
+  background: #ffd700;
+  color: #222;
+  font-size: 1.1rem;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.5);
+}
+
+button:hover {
+  background: #ffec80;
+  transform: scale(1.1);
+}
+
+/* Congrats screen */
+#congratsMessage {
+  font-size: 2rem;
+  color: #32cd32;
+  text-shadow: 0 0 15px #32cd32, 0 0 30px #32cd32;
+  animation: pop 1s infinite alternate;
+}
+
+@keyframes pop {
+  from { transform: scale(1); }
+  to { transform: scale(1.1); }
+}
+
+/* Winning line */
+.winning-line {
+  position: absolute;
+  height: 6px;
+  border-radius: 5px;
+  transform-origin: left center;
+  z-index: 10;
+}
+
+.winning-line.X {
+  background: #00ffea;
+  box-shadow: 0 0 15px #00ffea, 0 0 30px #00ffea;
+}
+
+.winning-line.O {
+  background: #ff3333;
+  box-shadow: 0 0 15px #ff3333, 0 0 30px #ff3333;
+}

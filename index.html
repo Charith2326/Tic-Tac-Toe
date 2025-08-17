@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tic Tac Toe Epic</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Player name input -->
+  <div class="menu" id="nameMenu">
+    <h1>Tic Tac Toe ⚡</h1>
+    <p>Enter Player Names</p>
+    <input type="text" id="playerX" placeholder="Player X Name">
+    <input type="text" id="playerO" placeholder="Player O Name">
+    <br>
+    <button onclick="goToBoardMenu()">Next ➡</button>
+  </div>
+
+  <!-- Board size selection -->
+  <div class="menu hidden" id="boardMenu">
+    <h1>Choose Board Size</h1>
+    <button onclick="startGame(3)">3 × 3</button>
+    <button onclick="startGame(4)">4 × 4</button>
+    <button onclick="startGame(5)">5 × 5</button>
+  </div>
+
+  <!-- Game section -->
+  <div class="game hidden" id="game">
+    <h1>Tic Tac Toe ⚡</h1>
+    <div class="board" id="board"></div>
+    <div class="status" id="status"></div>
+    <button onclick="resetGame()">🔄 Restart</button>
+    <button onclick="backToMenu()">⬅ Back to Menu</button>
+  </div>
+
+  <!-- Congrats screen -->
+  <div class="menu hidden" id="congratsScreen">
+    <h1 id="congratsMessage">🎉 Congrats 🎉</h1>
+    <button onclick="backToMenu()">Play Again</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
