@@ -38,8 +38,8 @@ function createBoard() {
   oWins = 0;
   statusText.textContent = `${playerXName} (X) vs ${playerOName} (O)`;
 
-  board.style.gridTemplateColumns = `repeat(${boardSize}, 80px)`;
-  board.style.gridTemplateRows = `repeat(${boardSize}, 80px)`;
+  board.style.gridTemplateColumns = `repeat(${boardSize}, 1fr)`;
+  board.style.gridTemplateRows = `repeat(${boardSize}, 1fr)`;
 
   for (let i = 0; i < boardSize * boardSize; i++) {
     const cell = document.createElement("div");
@@ -58,7 +58,6 @@ function handleCellClick(e) {
   e.target.textContent = currentPlayer;
   e.target.classList.add(currentPlayer);
 
-  // Check if this move creates new winning lines
   const winningCombos = findWinningLines();
   winningCombos.forEach(({combo, player}) => {
     drawWinningLine(combo, player);
@@ -66,13 +65,11 @@ function handleCellClick(e) {
     if (player === "O") oWins++;
   });
 
-  // If board full -> finalize
   if (!gameState.includes("")) {
     finalizeGame();
     return;
   }
 
-  // Switch player
   currentPlayer = currentPlayer === "X" ? "O" : "X";
   statusText.textContent = currentPlayer === "X"
     ? `${playerXName}'s Turn (X)`
@@ -127,7 +124,6 @@ function findWinningLines() {
   for (let line of lines) {
     const [a, b, c] = line;
     if (gameState[a] && gameState[a] === gameState[b] && gameState[a] === gameState[c]) {
-      // Prevent duplicate scoring by marking
       if (!board.querySelector(`.cell[data-index="${a}"]`).classList.contains("used") ||
           !board.querySelector(`.cell[data-index="${b}"]`).classList.contains("used") ||
           !board.querySelector(`.cell[data-index="${c}"]`).classList.contains("used")) {
