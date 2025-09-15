@@ -44,17 +44,21 @@ input {
   display: grid;
   gap: 10px;
   margin: 20px auto;
-  position: relative; /* for winning line */
+  position: relative;
+  width: 90vw;         /* fit small devices */
+  max-width: 400px;    /* limit size on laptops */
 }
 
 .cell {
+  aspect-ratio: 1 / 1; /* always square */
+  width: 100%;
   background: #2c2f48;
   border-radius: 15px;
   box-shadow: 0 5px 15px rgba(0,0,0,0.6);
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 2.5rem;
+  font-size: clamp(1.2rem, 5vw, 2.5rem); /* responsive text */
   font-weight: bold;
   cursor: pointer;
   transition: transform 0.2s, background 0.3s;
